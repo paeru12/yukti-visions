@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Globe, Wrench, TrendingUp, ShieldCheck } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "./ScrollAnimations";
 
 const services = [
   {
@@ -41,7 +42,7 @@ const ServicesSection = () => {
     <section id="services" className="py-24 bg-white relative">
       <div className="container mx-auto px-6">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <FadeIn className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block text-purple font-semibold text-sm uppercase tracking-wider mb-4">
             Layanan Kami
           </span>
@@ -53,46 +54,46 @@ const ServicesSection = () => {
             Kami menyediakan layanan lengkap untuk membangun dan mengembangkan 
             kehadiran digital bisnis Anda dengan standar tertinggi.
           </p>
-        </div>
+        </FadeIn>
 
         {/* Services Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, index) => (
-            <Card 
-              key={index} 
-              variant="premium" 
-              className="group relative overflow-hidden"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              {/* Glow Effect on Hover */}
-              <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
-              
-              <CardHeader className="pb-4">
-                {/* Icon */}
-                <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 ${service.glowColor}`}>
-                  <service.icon className="w-7 h-7 text-white" />
-                </div>
+            <StaggerItem key={index}>
+              <Card 
+                variant="premium" 
+                className="group relative overflow-hidden h-full"
+              >
+                {/* Glow Effect on Hover */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${service.color} opacity-0 group-hover:opacity-5 transition-opacity duration-500`} />
                 
-                <CardTitle className="text-xl group-hover:text-purple transition-colors">
-                  {service.title}
-                </CardTitle>
-              </CardHeader>
-              
-              <CardContent>
-                <CardDescription className="text-sm leading-relaxed mb-4">
-                  {service.description}
-                </CardDescription>
+                <CardHeader className="pb-4">
+                  {/* Icon */}
+                  <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${service.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 ${service.glowColor}`}>
+                    <service.icon className="w-7 h-7 text-white" />
+                  </div>
+                  
+                  <CardTitle className="text-xl group-hover:text-purple transition-colors">
+                    {service.title}
+                  </CardTitle>
+                </CardHeader>
                 
-                {/* Price Tag */}
-                <div className="pt-4 border-t border-border">
-                  <p className={`font-bold bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>
-                    {service.price}
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
+                <CardContent>
+                  <CardDescription className="text-sm leading-relaxed mb-4">
+                    {service.description}
+                  </CardDescription>
+                  
+                  {/* Price Tag */}
+                  <div className="pt-4 border-t border-border">
+                    <p className={`font-bold bg-gradient-to-r ${service.color} bg-clip-text text-transparent`}>
+                      {service.price}
+                    </p>
+                  </div>
+                </CardContent>
+              </Card>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

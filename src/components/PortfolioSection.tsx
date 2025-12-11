@@ -1,6 +1,7 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { FadeIn, ScaleIn } from "./ScrollAnimations";
 
 const portfolioItems = [
   {
@@ -54,7 +55,7 @@ const PortfolioSection = () => {
 
       <div className="container mx-auto px-6 relative">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <FadeIn className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block text-purple font-semibold text-sm uppercase tracking-wider mb-4">
             Portfolio Website
           </span>
@@ -65,10 +66,10 @@ const PortfolioSection = () => {
           <p className="text-muted-foreground text-lg">
             Beberapa contoh website yang telah kami kerjakan untuk klien dari berbagai industri
           </p>
-        </div>
+        </FadeIn>
 
         {/* Portfolio Slider */}
-        <div className="relative">
+        <ScaleIn delay={0.2} className="relative">
           {/* Navigation Arrows */}
           <button 
             onClick={prevSlide}
@@ -152,10 +153,10 @@ const PortfolioSection = () => {
               );
             })}
           </div>
-        </div>
+        </ScaleIn>
 
         {/* Dots Indicator */}
-        <div className="flex items-center justify-center gap-2 mt-10">
+        <FadeIn delay={0.3} className="flex items-center justify-center gap-2 mt-10">
           {portfolioItems.map((_, index) => (
             <button
               key={index}
@@ -167,7 +168,7 @@ const PortfolioSection = () => {
               }`}
             />
           ))}
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

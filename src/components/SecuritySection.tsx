@@ -1,4 +1,5 @@
 import { ShieldCheck, Lock, Server } from "lucide-react";
+import { FadeIn, ScaleIn } from "./ScrollAnimations";
 
 const SecuritySection = () => {
   return (
@@ -18,7 +19,7 @@ const SecuritySection = () => {
       <div className="container mx-auto px-6 relative">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Content */}
-          <div>
+          <FadeIn direction="right">
             <span className="inline-block text-gold font-semibold text-sm uppercase tracking-wider mb-4">
               Keamanan Terjamin
             </span>
@@ -48,10 +49,10 @@ const SecuritySection = () => {
                 </div>
               ))}
             </div>
-          </div>
+          </FadeIn>
 
           {/* Right - HTTPS Visual */}
-          <div className="relative flex items-center justify-center">
+          <ScaleIn delay={0.2} className="relative flex items-center justify-center">
             {/* Glow Background */}
             <div className="absolute w-80 h-80 bg-gradient-to-br from-neon-blue/20 to-purple/20 rounded-full blur-3xl animate-glow" />
             
@@ -82,7 +83,7 @@ const SecuritySection = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </ScaleIn>
         </div>
       </div>
     </section>

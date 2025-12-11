@@ -1,4 +1,5 @@
 import { Zap, Shield, Clock, Headphones, Code, Award } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "./ScrollAnimations";
 
 const features = [
   {
@@ -42,7 +43,7 @@ const WhyChooseUs = () => {
 
       <div className="container mx-auto px-6 relative">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <FadeIn className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block text-purple font-semibold text-sm uppercase tracking-wider mb-4">
             Mengapa Memilih Kami
           </span>
@@ -53,37 +54,36 @@ const WhyChooseUs = () => {
           <p className="text-muted-foreground text-lg">
             Kami berkomitmen memberikan layanan terbaik dengan standar kualitas tinggi
           </p>
-        </div>
+        </FadeIn>
 
         {/* Features Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <StaggerContainer className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
-            <div 
-              key={index}
-              className="group flex gap-5 p-6 rounded-2xl bg-white border border-border hover:border-purple/20 hover:shadow-lg transition-all duration-300"
-            >
-              {/* Icon Container */}
-              <div className="flex-shrink-0">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple/10 to-neon-blue/10 flex items-center justify-center group-hover:from-purple group-hover:to-neon-purple transition-all duration-300">
-                  <feature.icon className="w-6 h-6 text-purple group-hover:text-white transition-colors" />
+            <StaggerItem key={index}>
+              <div className="group flex gap-5 p-6 rounded-2xl bg-white border border-border hover:border-purple/20 hover:shadow-lg transition-all duration-300 h-full">
+                {/* Icon Container */}
+                <div className="flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-purple/10 to-neon-blue/10 flex items-center justify-center group-hover:from-purple group-hover:to-neon-purple transition-all duration-300">
+                    <feature.icon className="w-6 h-6 text-purple group-hover:text-white transition-colors" />
+                  </div>
+                </div>
+
+                {/* Content */}
+                <div>
+                  <h3 className="font-bold text-lg mb-2 group-hover:text-purple transition-colors">
+                    {feature.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {feature.description}
+                  </p>
+                  
+                  {/* Underline Effect */}
+                  <div className="w-0 h-0.5 bg-gradient-to-r from-purple to-neon-purple mt-3 group-hover:w-full transition-all duration-500" />
                 </div>
               </div>
-
-              {/* Content */}
-              <div>
-                <h3 className="font-bold text-lg mb-2 group-hover:text-purple transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {feature.description}
-                </p>
-                
-                {/* Underline Effect */}
-                <div className="w-0 h-0.5 bg-gradient-to-r from-purple to-neon-purple mt-3 group-hover:w-full transition-all duration-500" />
-              </div>
-            </div>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );

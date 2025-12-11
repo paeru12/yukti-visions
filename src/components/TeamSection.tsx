@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Linkedin, Twitter, Mail } from "lucide-react";
+import { FadeIn, StaggerContainer, StaggerItem } from "./ScrollAnimations";
 
 const teamMembers = [
   {
@@ -31,7 +32,7 @@ const TeamSection = () => {
 
       <div className="container mx-auto px-6 relative">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <FadeIn className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block text-purple font-semibold text-sm uppercase tracking-wider mb-4">
             Tim Kami
           </span>
@@ -42,62 +43,63 @@ const TeamSection = () => {
           <p className="text-muted-foreground text-lg">
             Gabungan tim profesional yang siap membantu mewujudkan website impian Anda
           </p>
-        </div>
+        </FadeIn>
 
         {/* Team Grid */}
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+        <StaggerContainer className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
           {teamMembers.map((member, index) => (
-            <Card 
-              key={index} 
-              variant="glossy" 
-              className="group text-center overflow-hidden"
-            >
-              {/* Avatar Area */}
-              <div className="pt-8 pb-4 relative">
-                {/* Background Decoration */}
-                <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-gradient-to-br ${member.gradient} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity`} />
-                
-                {/* Avatar */}
-                <div className="relative inline-block">
-                  <div className={`w-28 h-28 rounded-full bg-gradient-to-br ${member.gradient} p-1 shadow-lg group-hover:shadow-xl transition-shadow`}>
-                    <div className="w-full h-full rounded-full bg-gradient-to-br from-muted to-white flex items-center justify-center">
-                      <span className="text-3xl font-bold text-foreground">
-                        {member.name.split(" ").map(n => n[0]).join("")}
-                      </span>
-                    </div>
-                  </div>
+            <StaggerItem key={index}>
+              <Card 
+                variant="glossy" 
+                className="group text-center overflow-hidden"
+              >
+                {/* Avatar Area */}
+                <div className="pt-8 pb-4 relative">
+                  {/* Background Decoration */}
+                  <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-gradient-to-br ${member.gradient} opacity-10 rounded-full blur-2xl group-hover:opacity-20 transition-opacity`} />
                   
-                  {/* Online Status */}
-                  <div className="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-green-500 border-4 border-white" />
+                  {/* Avatar */}
+                  <div className="relative inline-block">
+                    <div className={`w-28 h-28 rounded-full bg-gradient-to-br ${member.gradient} p-1 shadow-lg group-hover:shadow-xl transition-shadow`}>
+                      <div className="w-full h-full rounded-full bg-gradient-to-br from-muted to-white flex items-center justify-center">
+                        <span className="text-3xl font-bold text-foreground">
+                          {member.name.split(" ").map(n => n[0]).join("")}
+                        </span>
+                      </div>
+                    </div>
+                    
+                    {/* Online Status */}
+                    <div className="absolute bottom-1 right-1 w-5 h-5 rounded-full bg-green-500 border-4 border-white" />
+                  </div>
                 </div>
-              </div>
 
-              <CardContent className="pt-0 pb-8">
-                <h3 className="font-bold text-xl mb-1 group-hover:text-purple transition-colors">
-                  {member.name}
-                </h3>
-                <p className={`text-sm font-medium bg-gradient-to-r ${member.gradient} bg-clip-text text-transparent mb-3`}>
-                  {member.role}
-                </p>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                  {member.description}
-                </p>
+                <CardContent className="pt-0 pb-8">
+                  <h3 className="font-bold text-xl mb-1 group-hover:text-purple transition-colors">
+                    {member.name}
+                  </h3>
+                  <p className={`text-sm font-medium bg-gradient-to-r ${member.gradient} bg-clip-text text-transparent mb-3`}>
+                    {member.role}
+                  </p>
+                  <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                    {member.description}
+                  </p>
 
-                {/* Social Links */}
-                <div className="flex items-center justify-center gap-3">
-                  {[Linkedin, Twitter, Mail].map((Icon, i) => (
-                    <button 
-                      key={i}
-                      className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-purple hover:text-white transition-all duration-300"
-                    >
-                      <Icon className="w-4 h-4" />
-                    </button>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
+                  {/* Social Links */}
+                  <div className="flex items-center justify-center gap-3">
+                    {[Linkedin, Twitter, Mail].map((Icon, i) => (
+                      <button 
+                        key={i}
+                        className="w-10 h-10 rounded-xl bg-muted flex items-center justify-center hover:bg-purple hover:text-white transition-all duration-300"
+                      >
+                        <Icon className="w-4 h-4" />
+                      </button>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </StaggerItem>
           ))}
-        </div>
+        </StaggerContainer>
       </div>
     </section>
   );
